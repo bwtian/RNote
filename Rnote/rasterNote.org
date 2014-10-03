@@ -46,6 +46,20 @@
 | Setting        | rasterOptions |                    |                  |        |       |             |
 |----------------+---------------+--------------------+------------------+--------+-------+-------------|
 * Raster options
+tmpdir_name <- paste(c(drive, ":/RASTER_TEMP/"), collapse='')
+if(file.exists(tmpdir_name) == FALSE){
+    dir.create(tmpdir_name)
+}
+
+rasterOptions(datatype = "FLT4S", 
+    progress = "text", 
+    tmpdir = tmpdir_name, 
+    tmptime = 4, 
+    timer = TRUE,
+    tolerance = 0.5,
+    chunksize = 1e+08,
+    maxmemory = 1e+09)
+
 * rasterVis
 #+NAME: rasterVis
 #+BEGIN_SRC dot :file ./Figs/rasterVis.png
