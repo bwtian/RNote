@@ -1,56 +1,69 @@
 * Raster Functions Summary
-|----------------+---------------+--------------------+------------------+---------------|
-| GIS, RS        | raster        | Matrix Style       | rgdal, gdalUtils | sp, rgeos     |
-|----------------+---------------+--------------------+------------------+---------------|
-| Read           | raster        |                    |                  |               |
-| Write          | writeRaster   |                    |                  |               |
-|----------------+---------------+--------------------+------------------+---------------|
-| New            | raster        |                    |                  |               |
-|                | rasterFromXYZ |                    |                  |               |
-|                |               |                    |                  |               |
-|                |               |                    |                  |               |
-|----------------+---------------+--------------------+------------------+---------------|
-| Info           |               |                    | gdalinfo         |               |
-|                | nlayer        |                    | gdaltindex       |               |
-|                | ncell         |                    |                  |               |
-|                | nrow          |                    |                  |               |
-|                | ncol          |                    |                  |               |
-|----------------+---------------+--------------------+------------------+---------------|
-| Layers         | stack         |                    |                  |               |
-|                | brick         |                    |                  |               |
-|                | subset        |                    |                  |               |
-|----------------+---------------+--------------------+------------------+---------------|
-| Value          | setValue      | r[] <- 1:ncell(r)  |                  |               |
-| New Value      | reclassify    | r[is.na(r[])] <- 0 |                  |               |
-| Projection     | projectRaster |                    | spTransform      | resample      |
-|                | resample      |                    |                  |               |
-| Crop Rectangle | crop          |                    |                  |               |
-| Mask ROI       | mask          | sp[shp]            |                  | gIntersection |
-| Expend         | extend        |                    |                  |               |
-| Merge          | merge         |                    | gdal_merge       |               |
-|                | mosaic        |                    |                  |               |
-| Down Scalling  | aggregate     |                    |                  |               |
-|                | focal         |                    |                  |               |
-|                | disaggregate  |                    |                  |               |
-|                |               |                    | gdal_grid        |               |
-| Interploate    |               |                    | gdal_fillnodata  |               |
-|----------------+---------------+--------------------+------------------+---------------|
-| Translate      | resample      |                    | gdal_translate   |               |
-| Rast to Vect   | rasterlize    |                    | gdal_rasterize   |               |
-| Vect to Rast   | raster        |                    | gdal_polygonize  |               |
-|----------------+---------------+--------------------+------------------+---------------|
-| Post           | clump         |                    | gdal_sieve       |               |
-| Classification |               |                    |                  |               |
-|----------------+---------------+--------------------+------------------+---------------|
-| Plot           | plot          |                    |                  |               |
-|----------------+---------------+--------------------+------------------+---------------|
-| rasterVis      |               |                    |                  |               |
-|                |               |                    |                  |               |
-|                |               |                    |                  |               |
-|                |               |                    |                  |               |
-|----------------+---------------+--------------------+------------------+---------------|
-| Setting        | rasterOptions |                    |                  |               |
-|----------------+---------------+--------------------+------------------+---------------|
+|----------------+--------------------+---------------+------------------+--------------------------|
+| GIS, RS        | R or Matrix Style  | raster        | rgdal, gdalUtils | sp, rgeos                |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| Read           |                    | raster        |                  |                          |
+| Write          |                    | writeRaster   |                  |                          |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| New            |                    | raster        |                  |                          |
+|                |                    | rasterFromXYZ |                  |                          |
+|                |                    |               |                  |                          |
+|                |                    |               |                  |                          |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| Info           |                    |               | gdalinfo         |                          |
+|                |                    | nlayer        | gdaltindex       |                          |
+|                |                    | ncell         |                  |                          |
+|                |                    | nrow          |                  |                          |
+|                |                    | ncol          |                  |                          |
+|                |                    |               |                  |                          |
+| Area           |                    |               |                  | gArea                    |
+|                |                    |               |                  |                          |
+| BBox           | bbox               | extent        |                  | gEnvelope                |
+| Boundary       |                    |               |                  | gBoundary gConvexHull    |
+| Center         |                    |               |                  | gCentroid                |
+|                |                    |               |                  |                          |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| Layers         |                    | stack         |                  |                          |
+|                |                    | brick         |                  |                          |
+|                |                    | subset        |                  |                          |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| Value          | r[] <- 1:ncell(r)  | setValue      |                  |                          |
+| New Value      | r[is.na(r[])] <- 0 | reclassify    |                  |                          |
+| Projection     |                    | projectRaster | spTransform      | resample                 |
+|                |                    | resample      |                  |                          |
+| Crop Rectangle |                    | crop          |                  |                          |
+|                |                    |               |                  | gBuffer                  |
+| Mask ROI       | sp[shp]            | mask          |                  | gIntersection gIntersets |
+| Expend         |                    | extend        |                  |                          |
+| Merge          |                    | merge         | gdal_merge       |                          |
+|                |                    | mosaic        |                  |                          |
+| Down Scalling  |                    | aggregate     |                  |                          |
+|                |                    | focal         |                  |                          |
+|                |                    | disaggregate  |                  |                          |
+|                |                    |               | gdal_grid        |                          |
+| Interploate    |                    |               | gdal_fillnodata  |                          |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| Translate      |                    | resample      | gdal_translate   |                          |
+| Rast to Vect   |                    | rasterlize    | gdal_rasterize   |                          |
+| Vect to Rast   |                    | raster        | gdal_polygonize  |                          |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| Post           |                    | clump         | gdal_sieve       |                          |
+| Classification |                    |               |                  |                          |
+|                |                    |               |                  |                          |
+|                |                    |               |                  |                          |
+|                |                    |               |                  |                          |
+|                |                    |               |                  |                          |
+| Contains       | setdiff            |               |                  | gContains                |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| Plot           |                    | plot          |                  |                          |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| rasterVis      |                    |               |                  |                          |
+|                |                    |               |                  |                          |
+|                |                    |               |                  |                          |
+|                |                    |               |                  |                          |
+|----------------+--------------------+---------------+------------------+--------------------------|
+| Setting        |                    | rasterOptions |                  |                          |
+|----------------+--------------------+---------------+------------------+--------------------------|
 * Raster options
 tmpdir_name <- paste(c(drive, ":/RASTER_TEMP/"), collapse='')
 if(file.exists(tmpdir_name) == FALSE){
