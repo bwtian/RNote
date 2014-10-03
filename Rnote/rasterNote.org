@@ -10,8 +10,8 @@
 |                |               |                    |                  |               |
 |                |               |                    |                  |               |
 |----------------+---------------+--------------------+------------------+---------------|
-| Info           |               |                    | gdal             |               |
-|                | nlayer        |                    |                  |               |
+| Info           |               |                    | gdalinfo         |               |
+|                | nlayer        |                    | gdaltindex       |               |
 |                | ncell         |                    |                  |               |
 |                | nrow          |                    |                  |               |
 |                | ncol          |                    |                  |               |
@@ -27,17 +27,19 @@
 | Crop Rectangle | crop          |                    |                  |               |
 | Mask ROI       | mask          | sp[shp]            |                  | gIntersection |
 | Expend         | extend        |                    |                  |               |
-| Merge          | merge         |                    |                  |               |
+| Merge          | merge         |                    | gdal_merge       |               |
 |                | mosaic        |                    |                  |               |
 | Down Scalling  | aggregate     |                    |                  |               |
 |                | focal         |                    |                  |               |
 |                | disaggregate  |                    |                  |               |
+|                |               |                    | gdal_grid        |               |
+| Interploate    |               |                    | gdal_fillnodata  |               |
 |----------------+---------------+--------------------+------------------+---------------|
 | Translate      | resample      |                    | gdal_translate   |               |
 | Rast to Vect   | rasterlize    |                    | gdal_rasterize   |               |
 | Vect to Rast   | raster        |                    | gdal_polygonize  |               |
 |----------------+---------------+--------------------+------------------+---------------|
-| Post           | clump         |                    |                  |               |
+| Post           | clump         |                    | gdal_sieve       |               |
 | Classification |               |                    |                  |               |
 |----------------+---------------+--------------------+------------------+---------------|
 | Plot           | plot          |                    |                  |               |
