@@ -154,7 +154,6 @@ rasterOptions(datatype = "FLT4S",
 
 
 
-
 * Example
 #+BEGIN_SRC R
 hokkaido <- jpn[which(jpn$KEN == "北海道"), ]
